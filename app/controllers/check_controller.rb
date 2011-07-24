@@ -24,15 +24,22 @@ class CheckController < ApplicationController
   def check20 # Usually, use this
     hosts = Host.order(:time)
     i = 0
+    ir = rand(100)
     hosts.each do |h|
+      logger.debug(h.ip)
+      logger.debug(h.alive)
       if h.alive == 1
         h.period_check
+        i += 1
+      else
+        h.time = Time.now
+        h.save
       end
 
-      if i > 19
+      if i > ir
         break
       end
-      i += 1
+
     end
     render :text => i.to_s + ' host(s) are checked'
   end

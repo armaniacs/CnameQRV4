@@ -10,22 +10,6 @@ class HostsController < ApplicationController
     end
   end
 
-  # GET /hosts/all
-  def all
-    @hosts = Host.all.entries
-    respond_to do |format|
-      format.html { render :text => @hosts.to_json }
-    end
-  end
-  # GET /hosts/alive
-  def alive
-    @hosts = Host.where(:alive => 1).entries
-    respond_to do |format|
-      format.html { render :text => @hosts.to_json }
-    end
-  end
-
-
   # GET /hosts/1
   # GET /hosts/1.xml
   def show
