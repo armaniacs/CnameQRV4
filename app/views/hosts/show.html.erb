@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ip:</b>
+  <%= @host.ip %>
+</p>
+
+<p>
+  <b>Hostname:</b>
+  <%= @host.hostname %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @host.type %>
+</p>
+
+<p>
+  <b>Preference:</b>
+  <%= @host.preference %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @host.time %>
+</p>
+
+<p>
+  <b>Alive:</b>
+  <%= @host.alive %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @host.country %>
+</p>
+
+<p>
+  <b>Continent:</b>
+  <%= @host.continent %>
+</p>
+
+<p>
+  <b>Checkpref:</b>
+  <%= @host.checkpref %>
+</p>
+
+<p>
+  <b>Tracefile:</b>
+  <%= @host.tracefile %>
+</p>
+
+<p>
+  <b>Lastmodifiedtime:</b>
+  <%= @host.lastmodifiedtime %>
+</p>
+
+<p>
+  <b>Nouse:</b>
+  <%= @host.nouse %>
+</p>
+
+<p>
+  <b>Failreason:</b>
+  <%= @host.failreason %>
+</p>
+
+<p>
+  <b>Targetnet:</b>
+  <%= @host.targetnet %>
+</p>
+
+<p>
+  <b>Targetasnum:</b>
+  <%= @host.targetasnum %>
+</p>
+
+
+<%= link_to 'Edit', edit_host_path(@host) %> |
+<%= link_to 'Back', hosts_path %>

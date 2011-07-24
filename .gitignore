@@ -1,0 +1,8 @@
+.bundle
+.DS_Store
+db/*.sqlite3
+log/*.log
+tmp/
+config/aws.yml
+config/database.yml
+

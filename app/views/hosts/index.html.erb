@@ -1,0 +1,51 @@
+<h1>Listing hosts</h1>
+
+<table>
+  <tr>
+    <th>Ip</th>
+    <th>Hostname</th>
+    <th>Type</th>
+    <th>Preference</th>
+    <th>Time</th>
+    <th>Alive</th>
+    <th>Country</th>
+    <th>Continent</th>
+    <th>Checkpref</th>
+    <th>Tracefile</th>
+    <th>Lastmodifiedtime</th>
+    <th>Nouse</th>
+    <th>Failreason</th>
+    <th>Targetnet</th>
+    <th>Targetasnum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hosts.each do |host| %>
+  <tr>
+    <td><%= host.ip %></td>
+    <td><%= host.hostname %></td>
+    <td><%= host.type %></td>
+    <td><%= host.preference %></td>
+    <td><%= host.time %></td>
+    <td><%= host.alive %></td>
+    <td><%= host.country %></td>
+    <td><%= host.continent %></td>
+    <td><%= host.checkpref %></td>
+    <td><%= host.tracefile %></td>
+    <td><%= host.lastmodifiedtime %></td>
+    <td><%= host.nouse %></td>
+    <td><%= host.failreason %></td>
+    <td><%= host.targetnet %></td>
+    <td><%= host.targetasnum %></td>
+    <td><%= link_to 'Show', host %></td>
+    <td><%= link_to 'Edit', edit_host_path(host) %></td>
+    <td><%= link_to 'Destroy', host, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Host', new_host_path %>
