@@ -5,4 +5,5 @@ log/*.log
 tmp/
 config/aws.yml
 config/database.yml
+Gemfile.lock
 
