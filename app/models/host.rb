@@ -32,7 +32,15 @@ class Host < AWS::Record::Base
     self.save
   end
 
-  def period_check
+
+
+  def period_check # sqs
+    if self.checkpref < 150 and (Time.now - self.time > 500)
+      check_host_sqs self.ip
+    end
+  end
+
+  def period_check_direct # direct
     if self.checkpref < 150 and (Time.now - self.time > 500)
 
       ch_tf, ch_body, ch_lm = check_host self.ip

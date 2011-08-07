@@ -3,9 +3,22 @@ require 'timeout'
 module CheckHelper
   include ApplicationHelper
 
+
+  def check_host_sqs(ip)
+    url = "https://sqs.ap-northeast-1.amazonaws.com/750753468831/qrv"
+    sqs = AWS::SQS.new(:sqs_endpoint => 'sqs.ap-northeast-1.amazonaws.com')
+    queue = sqs.queues[url]
+
+    if ip && ip_format_check(ip)
+      msg = queue.send_message ip
+    end
+  end
+
   def check_host(ip)
     s0 = ''
+
     if ip && ip_format_check(ip)
+
       headers = {
         'Host'=>'cdn.debian.net',
         'User-Agent' => 'Debian-cdn-cname-ping/1.0'
@@ -32,6 +45,4 @@ module CheckHelper
       return false, "fail", s0.code
     end
   end
-
-
 end
