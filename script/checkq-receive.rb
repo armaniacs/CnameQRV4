@@ -20,14 +20,13 @@ slog = Syslog.open(__FILE__,
                   Syslog::Constants::LOG_CONS,
                   Syslog::Constants::LOG_DAEMON)
 slog.info "start checkq-receive"
-=begin
 if Process.respond_to? :daemon  # Ruby 1.9
   Process.daemon
 else                            # Ruby 1.8
   require 'webrick'
   WEBrick::Daemon.start
 end
-=end
+
 
 class Host < AWS::Record::Base
   string_attr :ip
