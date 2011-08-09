@@ -1,3 +1,4 @@
+# -*- coding: us-ascii -*-
 CnameQRV4::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -54,6 +55,13 @@ CnameQRV4::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
+
+  match 'hosts/:_id', :to => 'hosts#show', :via => :get
+  match 'hosts/:_id', :to => 'hosts#update', :via => :put
+  match 'hosts/:_id', :to => 'hosts#destroy', :via => :delete
+  match 'hosts/:_id/edit', :to => 'hosts#edit', :constraints => {:_id => /\w+-\w+-\w+-\w+-\w+/}
+
+
   match ':controller(/:action(/:id(.:format)))'
 
   resources :hosts
