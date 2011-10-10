@@ -26,7 +26,6 @@ class HostsController < ApplicationController
   # GET /hosts/new.xml
   def new
     @host = Host.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @host }

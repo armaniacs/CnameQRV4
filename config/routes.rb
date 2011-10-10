@@ -57,6 +57,7 @@ CnameQRV4::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
 
   match 'hosts/new', :to => 'hosts#new'
+  match 'hosts/', :to => 'hosts#create', :via => :post
   match 'hosts/:_id', :to => 'hosts#show', :via => :get
   match 'hosts/:_id', :to => 'hosts#update', :via => :put
   match 'hosts/:_id', :to => 'hosts#destroy', :via => :delete
