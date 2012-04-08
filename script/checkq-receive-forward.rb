@@ -79,8 +79,7 @@ def check_host(ip)
     end
 
     begin
-      if s0.code.to_i == 200
-        mirror.lastmodifiedtime = s0.header['last-modified']
+      if s0.code.to_i == 200 && mirror.lastmodifiedtime = s0.header['last-modified']
         if Time.now - Time.parse(mirror.lastmodifiedtime.to_s) > 86400 * 2 # DELAY
           mirror.checkpref += 1
           mirror.failreason = "DELAY"
