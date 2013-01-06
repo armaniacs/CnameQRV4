@@ -1,0 +1,81 @@
+<%= form_for(@host) do |f| %>
+  <% if @host.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@host.errors.count, "error") %> prohibited this host from being saved:</h2>
+
+      <ul>
+      <% @host.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ip %><br />
+    <%= f.text_field :ip %>
+  </div>
+  <div class="field">
+    <%= f.label :hostname %><br />
+    <%= f.text_field :hostname %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :preference %><br />
+    <%= f.text_field :preference %>
+  </div>
+<!--
+  <div class="field">
+    <%= f.label :time %><br />
+    <%= f.datetime_select :time %>
+  </div>
+-->
+  <div class="field">
+    <%= f.label :alive %><br />
+    <%= f.check_box :alive %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :continent %><br />
+    <%= f.text_field :continent %>
+  </div>
+  <div class="field">
+    <%= f.label :checkpref %><br />
+    <%= f.text_field :checkpref %>
+  </div>
+  <div class="field">
+    <%= f.label :tracefile %><br />
+    <%= f.text_field :tracefile %>
+  </div>
+<!--  
+  <div class="field">
+    <%= f.label :lastmodifiedtime %><br />
+    <%= f.datetime_select :lastmodifiedtime %>
+  </div>
+-->  
+  <div class="field">
+    <%= f.label :nouse %><br />
+    <%= f.check_box :nouse %>
+  </div>
+  <div class="field">
+    <%= f.label :failreason %><br />
+    <%= f.text_field :failreason %>
+  </div>
+  <div class="field">
+    <%= f.label :targetnet %><br />
+    <%= f.text_field :targetnet %>
+  </div>
+  <div class="field">
+    <%= f.label :targetasnum %><br />
+    <%= f.text_field :targetasnum %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

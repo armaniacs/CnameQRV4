@@ -10,10 +10,16 @@ class StatusController < ApplicationController
   # GET /status/alive
   def alive
     @hosts = Host.where(:alive => 1).entries
+    @hosts_jp = Host.where("alive = '1' AND hostname = 'jp.cdn.araki.net'").entries
+    if @hosts_jp.size == 0
+      @hosts_jp = Host.where(:hostname => 'jp.cdn.araki.net').order(:preference).entries
+
+      @hosts += @hosts_jp
+    end
+
     respond_to do |format|
       format.html { render :text => @hosts.to_json }
     end
   end
-
 
 end

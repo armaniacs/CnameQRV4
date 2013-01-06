@@ -1,5 +1,9 @@
 <h1>Listing hosts</h1>
 
+Registored: <%= @hosts.size %> /
+Alive: <%= @alives.size %> /
+JPN Alive: <%= @hosts_jp.size %>
+
 <table class="qrv">
   <tr>
     <th>Ip</th>
@@ -17,13 +21,16 @@
     <th>Failreason</th>
     <th>Targetnet</th>
     <th>Targetasnum</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Detail</th>
   </tr>
 
 <% @hosts.each do |host| %>
+
+  <% if host.alive == 0 %>
+  <tr class="noalive">
+  <% else %>
   <tr>
+  <% end %>
     <td><%= host.ip %></td>
     <td><%= host.hostname %></td>
     <td><%= host.type %></td>
@@ -40,13 +47,10 @@
     <td><%= host.targetnet %></td>
     <td><%= host.targetasnum %></td>
     <td><%= link_to 'Show', host %></td>
-    <td><%= link_to 'Edit', edit_host_path(host) %></td>
-    <!-- td><%= link_to 'Destroy', host, :confirm => 'Are you sure?', :method => :delete %></td -->
-    <td><%= link_to 'Destroy', :action => "destroy", :_id => host.id %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Host', new_host_path %>
+

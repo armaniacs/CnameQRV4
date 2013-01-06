@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-CnameQRV4::Application.config.secret_token = '0d9d5948705fd549c7d33f894357f265ee8bca1799695f75a25581c7a0dfc8e563e8b078413b507550ab3e4d397c44fd31501e23e6d2eb9c220470efad72e79b'
+CnameQRV4::Application.config.secret_token = 'cfdf6e5e25278a9f5b039e42f5674aded7609c8cfe9c705b86dc8402406a3350319e37254d943dc4e8cb637d2fec4230ba97dee17004e603291464c731e9a384'

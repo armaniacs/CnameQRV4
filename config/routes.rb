@@ -60,7 +60,8 @@ CnameQRV4::Application.routes.draw do
   match 'hosts/', :to => 'hosts#create', :via => :post
   match 'hosts/:_id', :to => 'hosts#show', :via => :get
   match 'hosts/:_id', :to => 'hosts#update', :via => :put
-  match 'hosts/:_id', :to => 'hosts#destroy', :via => :delete
+#  match 'hosts/destroy/:_id', :to => 'hosts#destroy', :via => :delete
+  match 'hosts/destroy/:_id', :to => 'hosts#destroy'
   match 'hosts/:_id/edit', :to => 'hosts#edit', :constraints => {:_id => /\w+-\w+-\w+-\w+-\w+/}
 
 
