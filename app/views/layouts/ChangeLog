@@ -1,0 +1,4 @@
+2013-01-07  ARAKI Yasuhiro  <ar@debian.org>
+
+	* application.html.erb: Add country filter (filter.js) which is provided by hanzubon@hanzubon.jp.
+
