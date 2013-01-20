@@ -2,18 +2,18 @@ class StatusController < ApplicationController
 
   # GET /status/all
   def all
-    @hosts = Host.all.entries
+    @hosts = Host.all_cached
     respond_to do |format|
       format.html { render :text => @hosts.to_json }
     end
   end
+
   # GET /status/alive
   def alive
-    @hosts = Host.where(:alive => 1).entries
-    @hosts_jp = Host.where("alive = '1' AND hostname = 'jp.cdn.araki.net'").entries
+    @hosts = Host.alive_cached
+    @hosts_jp = Host.jp_alive_cached
     if @hosts_jp.size == 0
-      @hosts_jp = Host.where(:hostname => 'jp.cdn.araki.net').order(:preference).entries
-
+      @hosts_jp = Host.jp_all_cached
       @hosts += @hosts_jp
     end
 

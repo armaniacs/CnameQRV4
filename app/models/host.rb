@@ -20,7 +20,6 @@ class Host < AWS::Record::Base
   scope :running, where(:alive => 1)
   scope :running_by_time, order(:time)
 
-
   def uptodate
     ch_tf, ch_body, ch_lm = check_host self.ip
     if ch_tf
@@ -61,6 +60,30 @@ class Host < AWS::Record::Base
       end
       self.time = Time.now
       self.save
+    end
+  end
+
+  def self.all_cached
+    Rails.cache.fetch("hosts", :expires_in => 60.minutes) do
+      all
+    end
+  end
+
+  def self.jp_all_cached
+    Rails.cache.fetch("jp_hosts", :expires_in => 60.minutes) do
+      all
+    end
+  end
+
+  def self.alive_cached
+    Rails.cache.fetch("alive", :expires_in => 5.minutes) do
+      where(:alive => 1)
+    end
+  end
+
+  def self.jp_alive_cached
+    Rails.cache.fetch("jp_alive", :expires_in => 5.minutes) do
+      where("alive = '1' AND hostname = 'jp.cdn.araki.net'")
     end
   end
 

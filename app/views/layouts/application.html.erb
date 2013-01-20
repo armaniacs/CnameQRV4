@@ -2,12 +2,10 @@
 <html>
 <head>
   <title>CnameQRV4</title>
-  <!-- %= stylesheet_link_tag :all % -->
-  <%= stylesheet_link_tag 'qrv' %>
-  <!-- %= javascript_include_tag :defaults % -->
+  <%= stylesheet_link_tag :qrv, :cache => true %>
   <%= csrf_meta_tag %>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="/javascripts/filter.js"></script>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" %>
+  <%= javascript_include_tag :filter %>
 </head>
 <body>
 

@@ -2,9 +2,9 @@ class ViewController < ApplicationController
   # GET /hosts
   # GET /hosts.xml
   def index
-    @hosts = Host.all
-    @alives = Host.where(:alive => 1)
-    @hosts_jp = Host.where("alive = '1' AND hostname = 'jp.cdn.araki.net'")
+    @hosts = Host.all_cached
+    @alives = Host.alive_cached
+    @hosts_jp = Host.jp_alive_cached
 
     respond_to do |format|
       format.html # index.html.erb
