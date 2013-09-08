@@ -7,9 +7,9 @@ http://www.slideshare.net/ar_maniacs/araki-gemdebian2013b
 Components of cdn.debian.net
 ===============================
 
-1. CnameQRV4 (Control plane): This package
-1. HTTP checker 
-1. DNS
+1. CnameQRV4 (Control plane): It is included in this package. Run as a Rails Application on httpd.
+1. HTTP checker for surrogate.
+1. DNS (derived from DNSbalance.)
 
 Components of CnameQRV4
 -------------------------
