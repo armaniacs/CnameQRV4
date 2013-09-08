@@ -1,0 +1,30 @@
+table.qrv{
+    border-top:1px solid #663300;
+    border-left:1px solid #663300;
+    border-collapse:collapse;
+    border-spacing:0;
+    background-color:#ffffff;
+    empty-cells:show;
+    font-size:9pt;
+}
+.qrv th{
+    border-right:1px solid #663300;
+    border-bottom:1px solid #663300;
+    color:#330000;
+    background-color:#996633;
+    background-image:url(../images/table-back.gif);
+    background-position:left top;
+    padding:0.3em 1em;
+    text-align:center;
+    white-space: nowrap;
+}
+.qrv td{
+    border-right:1px solid #663300;
+    border-bottom:1px solid #663300;
+    padding:0.3em 1em;
+    white-space: nowrap;
+}
+
+.noalive td {
+    background: red;
+}

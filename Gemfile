@@ -1,8 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails'
 gem 'dalli'
 gem 'thin'
+gem 'rack-cache'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -32,3 +33,6 @@ gem 'sqlite3'
 #   gem 'webrat'
 # end
 gem "aws-sdk"
+
+#gem 'newrelic_rpm'
+

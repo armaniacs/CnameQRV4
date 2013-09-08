@@ -2,7 +2,7 @@ class ViewController < ApplicationController
   # GET /hosts
   # GET /hosts.xml
   def index
-    @hosts = Host.all_cached
+    @hosts = Host.all_cached.order(:country)
     @alives = Host.alive_cached
     @hosts_jp = Host.jp_alive_cached
 

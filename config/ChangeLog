@@ -1,0 +1,4 @@
+2011-10-11  ARAKI Yasuhiro  <ar@debian.org>
+
+	* routes.rb: add entry to route hosts#create.
+

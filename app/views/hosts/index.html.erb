@@ -1,7 +1,9 @@
 <h1>Listing hosts</h1>
 
+<%= form_tag('/hosts/picks') do -%>
 <table class="qrv">
   <tr>
+    <th>!</th>
     <th>Ip</th>
     <th>Hostname</th>
     <th>Type</th>
@@ -23,7 +25,12 @@
   </tr>
 
 <% @hosts.each do |host| %>
+  <% if host.alive == 0 %>
+  <tr class="noalive">
+  <% else %>
   <tr>
+  <% end %>
+    <td><%= check_box 'pick', host.id, {}, true, false %></td>
     <td><%= host.ip %></td>
     <td><%= host.hostname %></td>
     <td><%= host.type %></td>
@@ -41,12 +48,12 @@
     <td><%= host.targetasnum %></td>
     <td><%= link_to 'Show', host %></td>
     <td><%= link_to 'Edit', edit_host_path(host) %></td>
-    <!-- td><%= link_to 'Destroy', host, :confirm => 'Are you sure?', :method => :delete %></td -->
     <td><%= link_to 'Destroy', :action => "destroy", :_id => host.id %></td>
   </tr>
 <% end %>
 </table>
-
+<div><%= submit_tag 'Delete checked hosts' %></div>
+<% end -%>
 <br />
 
 <%= link_to 'New Host', new_host_path %>

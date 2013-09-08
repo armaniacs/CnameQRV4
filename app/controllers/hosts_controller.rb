@@ -2,7 +2,7 @@ class HostsController < ApplicationController
   # GET /hosts
   # GET /hosts.xml
   def index
-    @hosts = Host.all
+    @hosts = Host.all.order(:country)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,11 +14,15 @@ class HostsController < ApplicationController
   # GET /hosts/1.xml
   def show
     # @host = Host.find(params[:id])
-    @host = Host.find(params[:_id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @host }
+    begin
+      @host = Host.find(params[:_id])
+    rescue
+      render :text => "Please retry. Wait a minute."
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @host }
+      end
     end
   end
 
@@ -56,7 +60,7 @@ class HostsController < ApplicationController
   # PUT /hosts/1
   # PUT /hosts/1.xml
   def update
-    @host = Host.find(params[:_id])
+    @host = Host.find(params[:id])
 
     respond_to do |format|
       if @host.update_attributes(params[:host])
@@ -72,12 +76,31 @@ class HostsController < ApplicationController
   # DELETE /hosts/1
   # DELETE /hosts/1.xml
   def destroy
-    @host = Host.find(params[:_id])
-    @host.delete
+    begin
+      @host = Host.find(params[:_id])
+      @host.delete
+    rescue
+    end
 
     respond_to do |format|
+      sleep 2
       format.html { redirect_to(hosts_url) }
       format.xml  { head :ok }
     end
+  end
+
+  def picks
+    params[:pick].each do |k,v|
+      if v == "true"
+        @host = Host.find(k)
+        @host.delete        
+      end
+    end
+    respond_to do |format|
+      sleep 2
+      format.html { redirect_to(hosts_url) }
+      format.xml  { head :ok }
+    end
+    
   end
 end

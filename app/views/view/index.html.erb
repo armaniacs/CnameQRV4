@@ -4,8 +4,11 @@ Registored: <%= @hosts.size %> /
 Alive: <%= @alives.size %> /
 JPN Alive: <%= @hosts_jp.size %>
 
+<%= form_tag('/hosts/picks') do -%>
+
 <table class="qrv">
-  <tr>
+  <tr> 
+    <th>!</th>   
     <th>Ip</th>
     <th>Hostname</th>
     <th>Type</th>
@@ -31,6 +34,7 @@ JPN Alive: <%= @hosts_jp.size %>
   <% else %>
   <tr>
   <% end %>
+    <td><%= check_box 'pick', host.id, {}, true, false %></td>
     <td><%= host.ip %></td>
     <td><%= host.hostname %></td>
     <td><%= host.type %></td>
@@ -50,7 +54,8 @@ JPN Alive: <%= @hosts_jp.size %>
   </tr>
 <% end %>
 </table>
-
+<div><%= submit_tag 'Delete checked hosts' %></div>
+<% end -%>
 <br />
 
 

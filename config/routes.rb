@@ -56,16 +56,24 @@ CnameQRV4::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
 
-  match 'hosts/new', :to => 'hosts#new'
+##  match 'hosts/new', :to => 'hosts#new'
+  get 'hosts/new', :to => 'hosts#new'
+  post 'hosts/picks', :to => 'hosts#picks'
+
   match 'hosts/', :to => 'hosts#create', :via => :post
   match 'hosts/:_id', :to => 'hosts#show', :via => :get
   match 'hosts/:_id', :to => 'hosts#update', :via => :put
-#  match 'hosts/destroy/:_id', :to => 'hosts#destroy', :via => :delete
-  match 'hosts/destroy/:_id', :to => 'hosts#destroy'
-  match 'hosts/:_id/edit', :to => 'hosts#edit', :constraints => {:_id => /\w+-\w+-\w+-\w+-\w+/}
+
+###  match 'hosts/destroy/:_id', :to => 'hosts#destroy', :via => :delete
+##  match 'hosts/destroy/:_id', :to => 'hosts#destroy'
+  get 'hosts/destroy/:_id', :to => 'hosts#destroy'
+
+##  match 'hosts/:_id/edit', :to => 'hosts#edit', :constraints => {:_id => /\w+-\w+-\w+-\w+-\w+/}
+  get 'hosts/:_id/edit', :to => 'hosts#edit', :constraints => {:_id => /\w+-\w+-\w+-\w+-\w+/}
 
 
-  match ':controller(/:action(/:id(.:format)))'
+##  match ':controller(/:action(/:id(.:format)))'
+  get ':controller(/:action(/:id(.:format)))'
 
   resources :hosts
 end
